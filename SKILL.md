@@ -11,50 +11,56 @@ This skill provides comprehensive knowledge about the GoHighLevel (GHL) API. Doc
 
 ## Knowledge Base Location
 
-Point this at a local knowledge-base directory you maintain. Throughout this skill, `<knowledge-base>/ghl/` refers to that location.
+All documentation lives **inside this skill directory** — no external paths to configure. The two layers sit side by side at the skill root:
 
 ```
-<knowledge-base>/ghl/
+<skill>/
+  index.md                  Master index + "Which file for what" routing table + Known Gotchas
+  layer-1-official-docs/     Official GHL OpenAPI specs (you clone these — see below)
+  layer-2-enriched-docs/     Enriched, human-readable per-API docs (bundled with this skill)
 ```
 
 ### Two-Layer Documentation System
 
 **Layer 1: Official OpenAPI Specs (source of truth)**
 ```
-<knowledge-base>/ghl/highlevel-api-docs/apps/*.json
+layer-1-official-docs/apps/*.json
 ```
-Cloned from `https://github.com/GoHighLevel/highlevel-api-docs`. Contains machine-readable OpenAPI/JSON specs for every GHL API domain. Update by running `git pull` inside the directory.
+Machine-readable OpenAPI/JSON specs for every GHL API domain. These are **not bundled** — clone them into the skill once:
 
-**Layer 2: Enriched Agent Docs (your additions)**
+```bash
+cd <skill>
+git clone https://github.com/GoHighLevel/highlevel-api-docs layer-1-official-docs
 ```
-<knowledge-base>/ghl/api/*.md
+Keep them current with `git pull` inside `layer-1-official-docs/`.
+
+**Layer 2: Enriched Agent Docs (bundled)**
 ```
-Human-readable docs with usage notes, gotchas, tested examples, and verified schemas. Built from the official specs plus real-world testing.
+layer-2-enriched-docs/*.md   (or */README.md for split domains)
+```
+Human-readable docs with usage notes, gotchas, tested examples, and verified schemas — built from the official specs plus real-world testing. These ship with the skill.
 
 ### How to Use Both Layers
 
-1. **Start with the enriched docs** in `<knowledge-base>/ghl/api/` for endpoints you've documented. These have context the raw specs don't.
-2. **Fall back to the official specs** in `<knowledge-base>/ghl/highlevel-api-docs/apps/` for endpoints you haven't enriched yet. These JSON files contain complete request/response schemas.
+1. **Start with the enriched docs** in `layer-2-enriched-docs/` — they have context the raw specs don't. Use `index.md` to find the right file for a given GHL area, then open the per-API doc (or its folder `README.md`).
+2. **Fall back to the official specs** in `layer-1-official-docs/apps/` for endpoints not yet enriched. These JSON files contain complete request/response schemas.
 3. **If neither has what you need**, check the official web docs at https://marketplace.gohighlevel.com/docs/
+
+Keep the enriched docs accurate as you work — see the Self-Improvement Mandate below.
 
 ### Key Files
 
 | File | Purpose |
 |------|---------|
-| `index.md` | Master index of all API endpoints with documentation status |
-| `highlevel-api-docs/apps/*.json` | Official OpenAPI specs (36 API domains) |
-| `highlevel-api-docs/toc.json` | Table of contents for the official docs |
-| `highlevel-api-docs/docs/oauth/` | Official OAuth guides and scopes |
-
-### Enriched Docs (Layer 2)
-
-Human-readable per-API docs are **bundled with this skill** under `ghl/api/` — one file (or folder) per API domain (contacts, opportunities, invoices, calendars, etc.), each with usage notes, gotchas, tested examples, and verified schemas built on top of the official specs. Larger domains are split into a folder with its own `README.md` index. The master index `ghl/index.md` maps each API to its doc file, includes a "Which file for what" routing table, and a consolidated "Known Gotchas" list.
-
-Start at `ghl/index.md` to find the right file for a given GHL area, then open the per-API doc (or its folder `README.md`). Keep these docs accurate as you work — see the Self-Improvement Mandate below.
+| `index.md` | Master index of all API endpoints + routing table + Known Gotchas |
+| `layer-2-enriched-docs/*.md` | Bundled enriched per-API docs |
+| `layer-1-official-docs/apps/*.json` | Official OpenAPI specs (after you clone Layer 1) |
+| `layer-1-official-docs/toc.json` | Table of contents for the official docs |
+| `layer-1-official-docs/docs/oauth/` | Official OAuth guides and scopes |
 
 ### Official Specs Without Enriched Docs Yet
 
-These are available in `highlevel-api-docs/apps/` but may not have enriched docs in `api/` yet:
+These are available in `layer-1-official-docs/apps/` but may not have enriched docs in `layer-2-enriched-docs/` yet:
 
 | Spec File | Domain |
 |-----------|--------|
@@ -156,7 +162,7 @@ The widget page is built with Nuxt 3 and embeds the full form schema as a `__NUX
 
 ## Reading the Official JSON Specs
 
-The files in `highlevel-api-docs/apps/` are OpenAPI 3.0 specs. Key structure:
+The files in `layer-1-official-docs/apps/` are OpenAPI 3.0 specs. Key structure:
 
 ```
 {
@@ -187,16 +193,16 @@ To extract endpoint info from a spec file, look at:
 ## Keeping the Official Specs Updated
 
 ```bash
-cd <knowledge-base>/ghl/highlevel-api-docs
+cd <skill>/layer-1-official-docs
 git pull
 ```
 
 ## Common Tasks
 
 ### Finding an Endpoint
-1. Read the index: `<knowledge-base>/ghl/index.md`
-2. If documented, read the enriched file from `<knowledge-base>/ghl/api/`
-3. If not enriched, read the JSON spec from `<knowledge-base>/ghl/highlevel-api-docs/apps/`
+1. Read the index: `index.md`
+2. If documented, read the enriched file from `layer-2-enriched-docs/`
+3. If not enriched, read the JSON spec from `layer-1-official-docs/apps/`
 
 ### Getting Request/Response Schema
 - Enriched docs: search for the endpoint anchor (e.g., `#create-contact`)
@@ -219,7 +225,7 @@ git pull
 
 When you call a GHL API endpoint and discover that the docs are wrong (wrong field names, missing required fields, incorrect schemas), you should:
 
-1. Fix the relevant doc file in `<knowledge-base>/ghl/api/`
+1. Fix the relevant doc file in `layer-2-enriched-docs/`
 2. Add a `> **Tested:** {date}` note to the endpoint you verified
-3. Update the Known Issues Log in `<knowledge-base>/ghl/index.md`
+3. Update the Known Issues Log in `index.md`
 4. Change endpoint status from unverified to verified if you confirmed it with a live API call

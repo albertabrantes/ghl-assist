@@ -16,35 +16,35 @@ Quick routing table — open the listed file/folder for a given GHL area.
 
 | API / topic | Doc path |
 |-------------|----------|
-| Calendars (availability, events/appointments, groups, resources, notifications) | api/calendars/README.md |
-| Campaigns | api/campaigns.md |
-| Contacts (CRUD, tags, notes, tasks, search, campaigns/workflows, webhooks) | api/contacts/README.md |
-| Conversations (messages, search, Conversation AI) | api/conversations.md |
-| Courses | api/courses.md |
-| Custom Fields (legacy + V2, field types, folders) | api/custom-fields/README.md |
-| Custom Values | api/custom-values.md |
-| File Uploads (cross-API guide) | api/file-uploads.md |
-| Forms | api/forms.md |
-| Funnels | api/funnels.md |
-| Invoices (core, templates, schedules, text2pay, estimates) | api/invoices/README.md |
-| Locations (core, custom fields/values, tags, templates, tasks) | api/locations/README.md |
-| Medias | api/medias.md |
-| Custom Objects | api/objects.md |
-| OAuth / Authentication | api/oauth.md |
-| Opportunities (and Pipelines) | api/opportunities.md |
-| Payments (orders, transactions, subscriptions, integrations) | api/payments/README.md |
-| Products (core, prices/inventory, collections, reviews, store) | api/products/README.md |
-| Social Media Posting | api/social-media-posting.md |
-| Store (shipping carriers/zones/rates, store settings) | api/store/README.md |
-| Surveys | api/surveys.md |
-| Users | api/users.md |
-| Voice AI | api/voice-ai.md |
-| Workflows | api/workflows.md |
+| Calendars (availability, events/appointments, groups, resources, notifications) | layer-2-enriched-docs/calendars/README.md |
+| Campaigns | layer-2-enriched-docs/campaigns.md |
+| Contacts (CRUD, tags, notes, tasks, search, campaigns/workflows, webhooks) | layer-2-enriched-docs/contacts/README.md |
+| Conversations (messages, search, Conversation AI) | layer-2-enriched-docs/conversations.md |
+| Courses | layer-2-enriched-docs/courses.md |
+| Custom Fields (legacy + V2, field types, folders) | layer-2-enriched-docs/custom-fields/README.md |
+| Custom Values | layer-2-enriched-docs/custom-values.md |
+| File Uploads (cross-API guide) | layer-2-enriched-docs/file-uploads.md |
+| Forms | layer-2-enriched-docs/forms.md |
+| Funnels | layer-2-enriched-docs/funnels.md |
+| Invoices (core, templates, schedules, text2pay, estimates) | layer-2-enriched-docs/invoices/README.md |
+| Locations (core, custom fields/values, tags, templates, tasks) | layer-2-enriched-docs/locations/README.md |
+| Medias | layer-2-enriched-docs/medias.md |
+| Custom Objects | layer-2-enriched-docs/objects.md |
+| OAuth / Authentication | layer-2-enriched-docs/oauth.md |
+| Opportunities (and Pipelines) | layer-2-enriched-docs/opportunities.md |
+| Payments (orders, transactions, subscriptions, integrations) | layer-2-enriched-docs/payments/README.md |
+| Products (core, prices/inventory, collections, reviews, store) | layer-2-enriched-docs/products/README.md |
+| Social Media Posting | layer-2-enriched-docs/social-media-posting.md |
+| Store (shipping carriers/zones/rates, store settings) | layer-2-enriched-docs/store/README.md |
+| Surveys | layer-2-enriched-docs/surveys.md |
+| Users | layer-2-enriched-docs/users.md |
+| Voice AI | layer-2-enriched-docs/voice-ai.md |
+| Workflows | layer-2-enriched-docs/workflows.md |
 
 ---
 
 ## Custom Objects API — 9 Endpoints
-📄 **Documentation:** [objects.md](api/objects.md)
+📄 **Documentation:** [objects.md](layer-2-enriched-docs/objects.md)
 
 > **Tested:** GET /objects/, GET /objects/{key}, GET /objects/{schemaKey}/records/{id}, and POST /objects/{schemaKey}/records/search all verified against a live sub-account.
 
@@ -63,7 +63,7 @@ Quick routing table — open the listed file/folder for a given GHL area.
 ---
 
 ## OAuth API — 3 Endpoints
-📄 **Documentation:** [oauth.md](api/oauth.md)
+📄 **Documentation:** [oauth.md](layer-2-enriched-docs/oauth.md)
 
 | # | Endpoint | Method | Path | Status |
 |---|----------|--------|------|--------|
@@ -72,7 +72,7 @@ Quick routing table — open the listed file/folder for a given GHL area.
 | 3 | Get Installed Locations | GET | `/oauth/installedLocations` | 🔬 |
 
 ## Contacts API
-📄 **Documentation:** [contacts](api/contacts/README.md)
+📄 **Documentation:** [contacts](layer-2-enriched-docs/contacts/README.md)
 
 | Endpoint | Method | Status |
 |----------|--------|--------|
@@ -105,7 +105,7 @@ Quick routing table — open the listed file/folder for a given GHL area.
 | Bulk Update Tags | POST | ✅ |
 
 ## Voice AI API
-📄 **Documentation:** [voice-ai.md](api/voice-ai.md)
+📄 **Documentation:** [voice-ai.md](layer-2-enriched-docs/voice-ai.md)
 
 | Endpoint | Method | Status |
 |----------|--------|--------|
@@ -116,7 +116,7 @@ Quick routing table — open the listed file/folder for a given GHL area.
 
 ## Conversations API
 
-> **Note:** Comprehensive conversations documentation is in [conversations.md](api/conversations.md). Legacy docs for Search Conversations and Send Message (SMS) remain in [voice-ai.md](api/voice-ai.md) for backward compatibility.
+> **Note:** Comprehensive conversations documentation is in [conversations.md](layer-2-enriched-docs/conversations.md). Legacy docs for Search Conversations and Send Message (SMS) remain in [voice-ai.md](layer-2-enriched-docs/voice-ai.md) for backward compatibility.
 
 ### Inbound Messages
 | Endpoint | Method | Status |
@@ -149,7 +149,7 @@ Quick routing table — open the listed file/folder for a given GHL area.
 > **Status key:** ✅ = Documented, 🔬 = Unverified (from docs/research, not tested with live API calls)
 
 ## Calendars API
-📄 **Documentation:** [calendars](api/calendars/README.md)
+📄 **Documentation:** [calendars](layer-2-enriched-docs/calendars/README.md)
 
 ### Calendars (Core)
 | Endpoint | Method | Status |
@@ -220,7 +220,7 @@ Quick routing table — open the listed file/folder for a given GHL area.
 | Delete User Availability Schedule | DELETE | ✅ |
 
 ## Opportunities API
-📄 **Documentation:** [opportunities.md](api/opportunities.md)
+📄 **Documentation:** [opportunities.md](layer-2-enriched-docs/opportunities.md)
 
 | Endpoint | Method | Status |
 |----------|--------|--------|
@@ -237,7 +237,7 @@ Quick routing table — open the listed file/folder for a given GHL area.
 | Remove Followers | DELETE | ✅ |
 
 ## Pipelines API
-📄 **Documentation:** [opportunities.md](api/opportunities.md)
+📄 **Documentation:** [opportunities.md](layer-2-enriched-docs/opportunities.md)
 
 > **Note:** Pipeline management is part of the Opportunities API. There is no separate Pipelines API for creating/updating pipelines via API.
 
@@ -246,7 +246,7 @@ Quick routing table — open the listed file/folder for a given GHL area.
 | Get Pipelines | GET | ✅ |
 
 ## Users API
-📄 **Documentation:** [users.md](api/users.md)
+📄 **Documentation:** [users.md](layer-2-enriched-docs/users.md)
 
 | Endpoint | Method | Status |
 |----------|--------|--------|
@@ -259,7 +259,7 @@ Quick routing table — open the listed file/folder for a given GHL area.
 | Delete User | DELETE | 🔬 |
 
 ## Locations API
-📄 **Documentation:** [locations](api/locations/README.md)
+📄 **Documentation:** [locations](layer-2-enriched-docs/locations/README.md)
 
 ### Search
 | Endpoint | Method | Status |
@@ -327,12 +327,12 @@ Quick routing table — open the listed file/folder for a given GHL area.
 | Fetch Timezones | GET | 🔬 |
 
 ## File Uploads (Cross-API Guide)
-📄 **Documentation:** [file-uploads.md](api/file-uploads.md)
+📄 **Documentation:** [file-uploads.md](layer-2-enriched-docs/file-uploads.md)
 
 Comprehensive guide covering all file upload methods: contact custom fields, opportunity custom fields (two-step workaround), conversation attachments, and media library. Includes tested limitations and things that do NOT work. **Tested.**
 
 ## Forms API — 3 Endpoints
-📄 **Documentation:** [forms.md](api/forms.md)
+📄 **Documentation:** [forms.md](layer-2-enriched-docs/forms.md)
 
 | # | Endpoint | Method | Path | Status |
 |---|----------|--------|------|--------|
@@ -341,7 +341,7 @@ Comprehensive guide covering all file upload methods: contact custom fields, opp
 | 3 | Upload Files to Custom Fields | POST | `/forms/upload-custom-files` | ✅ |
 
 ## Surveys API — 2 Endpoints
-📄 **Documentation:** [surveys.md](api/surveys.md)
+📄 **Documentation:** [surveys.md](layer-2-enriched-docs/surveys.md)
 
 | # | Endpoint | Method | Path | Status |
 |---|----------|--------|------|--------|
@@ -349,23 +349,23 @@ Comprehensive guide covering all file upload methods: contact custom fields, opp
 | 2 | Get Surveys Submissions | GET | `/surveys/submissions` | 🔬 |
 
 ## Workflows API — 1 Endpoint
-📄 **Documentation:** [workflows.md](api/workflows.md)
+📄 **Documentation:** [workflows.md](layer-2-enriched-docs/workflows.md)
 
 | # | Endpoint | Method | Path | Status |
 |---|----------|--------|------|--------|
 | 1 | Get Workflows | GET | `/workflows/` | 🔬 |
 
-> **See also:** [workflows.md → Outbound Webhook Action — Payload Shape](api/workflows.md#outbound-webhook-action--payload-shape) (✅ verified) — payload shape, contact summary, customData wrapper, and merge-field reference for the Workflow Webhook *action* (when GHL sends an HTTP POST to your endpoint as part of a workflow execution). Distinct from the Webhooks API and from the Inbound Webhook *trigger*.
+> **See also:** [workflows.md → Outbound Webhook Action — Payload Shape](layer-2-enriched-docs/workflows.md#outbound-webhook-action--payload-shape) (✅ verified) — payload shape, contact summary, customData wrapper, and merge-field reference for the Workflow Webhook *action* (when GHL sends an HTTP POST to your endpoint as part of a workflow execution). Distinct from the Webhooks API and from the Inbound Webhook *trigger*.
 
 ## Campaigns API — 1 Endpoint
-📄 **Documentation:** [campaigns.md](api/campaigns.md)
+📄 **Documentation:** [campaigns.md](layer-2-enriched-docs/campaigns.md)
 
 | # | Endpoint | Method | Path | Status |
 |---|----------|--------|------|--------|
 | 1 | Get Campaigns | GET | `/campaigns/` | 🔬 |
 
 ## Products API — 27 Endpoints
-📄 **Documentation:** [products](api/products/README.md)
+📄 **Documentation:** [products](layer-2-enriched-docs/products/README.md)
 
 | # | Endpoint | Method | Path | Status |
 |---|----------|--------|------|--------|
@@ -403,7 +403,7 @@ Comprehensive guide covering all file upload methods: contact custom fields, opp
 | 27 | Get Store Stats | GET | `/products/store/{storeId}/stats` | 🔬 |
 
 ## Store API — 18 Endpoints
-📄 **Documentation:** [store](api/store/README.md)
+📄 **Documentation:** [store](layer-2-enriched-docs/store/README.md)
 
 | # | Endpoint | Method | Path | Status |
 |---|----------|--------|------|--------|
@@ -431,7 +431,7 @@ Comprehensive guide covering all file upload methods: contact custom fields, opp
 | 18 | Get Store Settings | GET | `/store/store-setting` | 🔬 |
 
 ## Funnels API — 7 Endpoints
-📄 **Documentation:** [funnels.md](api/funnels.md)
+📄 **Documentation:** [funnels.md](layer-2-enriched-docs/funnels.md)
 
 | # | Endpoint | Method | Path | Status |
 |---|----------|--------|------|--------|
@@ -446,7 +446,7 @@ Comprehensive guide covering all file upload methods: contact custom fields, opp
 | 7 | Fetch List of Redirects | GET | `/funnels/lookup/redirect/list` | 🔬 |
 
 ## Invoices API — 42 Endpoints
-📄 **Documentation:** [invoices](api/invoices/README.md)
+📄 **Documentation:** [invoices](layer-2-enriched-docs/invoices/README.md)
 
 | # | Endpoint | Method | Path | Status |
 |---|----------|--------|------|--------|
@@ -499,7 +499,7 @@ Comprehensive guide covering all file upload methods: contact custom fields, opp
 | 42 | Get Estimate | GET | `/invoices/estimate/{estimateId}` | 🔬 |
 
 ## Payments API — 24 Endpoints
-📄 **Documentation:** [payments](api/payments/README.md)
+📄 **Documentation:** [payments](layer-2-enriched-docs/payments/README.md)
 
 | # | Endpoint | Method | Path | Status |
 |---|----------|--------|------|--------|
@@ -537,7 +537,7 @@ Comprehensive guide covering all file upload methods: contact custom fields, opp
 | 24 | Update Marketplace App Capabilities | PUT | `/payments/custom-provider/capabilities` | 🔬 |
 
 ## Custom Fields API
-📄 **Documentation:** [custom-fields](api/custom-fields/README.md)
+📄 **Documentation:** [custom-fields](layer-2-enriched-docs/custom-fields/README.md)
 
 ### Legacy API (Contacts/Opportunities)
 | Endpoint | Method | Status |
@@ -562,7 +562,7 @@ Comprehensive guide covering all file upload methods: contact custom fields, opp
 | Delete Folder | DELETE | ✅ |
 
 ## Custom Values API
-📄 **Documentation:** [custom-values.md](api/custom-values.md)
+📄 **Documentation:** [custom-values.md](layer-2-enriched-docs/custom-values.md)
 
 | Endpoint | Method | Status |
 |----------|--------|--------|
@@ -573,7 +573,7 @@ Comprehensive guide covering all file upload methods: contact custom fields, opp
 | Delete Custom Value | DELETE | ✅ |
 
 ## Social Media Posting API — 40 Endpoints
-📄 **Documentation:** [social-media-posting.md](api/social-media-posting.md)
+📄 **Documentation:** [social-media-posting.md](layer-2-enriched-docs/social-media-posting.md)
 
 ### Accounts
 | # | Endpoint | Method | Path | Status |
@@ -710,7 +710,7 @@ When you use any endpoint documented here and encounter discrepancies, missing i
 
 ### How to Update
 
-1. **Fix the specific endpoint doc** in `areas/ghl/api/{api-name}.md`
+1. **Fix the specific endpoint doc** in `layer-2-enriched-docs/{api-name}.md` (or its folder for split domains)
 2. **Add a `> **Tested:**` note** with the date and what you confirmed, e.g.:
    ```
    > **Tested:** 2026-02-19 — Confirmed `contacts` (not `contactIds`) is the correct field name.

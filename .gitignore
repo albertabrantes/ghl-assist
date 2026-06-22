@@ -14,8 +14,8 @@
 credentials*
 
 # The official GHL OpenAPI clone is NOT bundled — users clone it themselves
-# (see README). Ignore it if anyone clones it into the skill folder.
-ghl/highlevel-api-docs/
+# into layer-1-official-docs/ (see README). Ignore it so it never gets committed.
+layer-1-official-docs/
 highlevel-api-docs/
 
 # Local working scratch (build scripts, session notes) — not part of the skill

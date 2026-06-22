@@ -27,28 +27,32 @@ git clone https://github.com/<your-org>/ghl-assist.git ~/.claude/skills/ghl-assi
 
 Claude Code will pick it up automatically. The skill activates whenever you ask about the GHL/GoHighLevel API.
 
-## The knowledge base (optional but recommended)
+## The knowledge base
 
-The skill is most powerful when paired with a local knowledge base of GHL docs. Throughout `SKILL.md`, `<knowledge-base>/ghl/` refers to a directory **you** maintain:
+All documentation lives **inside the skill directory** — a self-contained, two-layer system:
 
 ```
-<knowledge-base>/ghl/
-├── index.md                          # your master index of endpoints + status
-├── highlevel-api-docs/               # official specs, cloned from GHL's GitHub
-│   └── apps/*.json                   #   OpenAPI 3.0 specs, one per API domain
-└── api/*.md                          # your enriched, human-readable endpoint docs
+ghl-assist/
+├── index.md                          # master index: routing table + Known Gotchas
+├── layer-2-enriched-docs/            # enriched human-readable docs (BUNDLED ✅)
+│   ├── contacts/  invoices/  ...     #   large domains split into folders w/ README
+│   └── oauth.md   workflows.md  ...  #   smaller domains as single files
+└── layer-1-official-docs/            # official GHL OpenAPI specs (you clone these)
+    └── apps/*.json                   #   OpenAPI 3.0 specs, one per API domain
 ```
 
-To seed Layer 1 (the official specs):
+**Layer 2 (enriched docs) ships with the skill** — 24 API domains documented with usage notes, gotchas, tested examples, and verified schemas. Start at `index.md` to find the right file for any GHL area.
+
+**Layer 1 (official specs) is one quick clone.** From the skill directory:
 
 ```bash
-cd <knowledge-base>/ghl
-git clone https://github.com/GoHighLevel/highlevel-api-docs
+cd ~/.claude/skills/ghl-assist
+git clone https://github.com/GoHighLevel/highlevel-api-docs layer-1-official-docs
 ```
 
-Then build out Layer 2 (`api/*.md`) over time with usage notes, tested examples, and verified schemas. The skill's "Self-Improvement Mandate" encourages agents to keep these docs accurate as they go.
+Keep them current with `git pull` inside `layer-1-official-docs/`. (The clone is git-ignored, so it won't conflict with the skill's own repo.)
 
-You don't *need* a pre-built knowledge base to get value — the gotchas and quick reference stand on their own — but the two-layer system is where the skill really pays off.
+The skill is fully usable the moment it's installed — Layer 1 just adds the complete raw OpenAPI specs as a fallback for endpoints the enriched docs haven't covered yet. The skill's "Self-Improvement Mandate" encourages agents to keep the enriched docs accurate as they go.
 
 ## Not affiliated with GoHighLevel
 

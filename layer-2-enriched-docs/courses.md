@@ -1,6 +1,6 @@
 # Courses (Memberships) API
 
-> Spec: `highlevel-api-docs/apps/courses.json`
+> Spec: `layer-1-official-docs/apps/courses.json`
 > Base URL: `https://services.leadconnectorhq.com`
 > Header: `Version: 2021-07-28`
 > Auth: Bearer (PIT or OAuth Sub-Account access token)

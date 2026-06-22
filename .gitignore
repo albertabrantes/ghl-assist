@@ -21,6 +21,9 @@ highlevel-api-docs/
 # Local working scratch (build scripts, session notes) — not part of the skill
 docs/
 
+# Private prompts / review docs — never publish
+_private/
+
 # OS / editor cruft
 .DS_Store
 Thumbs.db

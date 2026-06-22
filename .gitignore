@@ -1,0 +1,26 @@
+# Never commit transcripts or secrets to this public repo.
+# The bundled docs under ghl/ are sanitized and intentionally published.
+
+# Claude Code chat transcripts (often contain live tokens/IDs)
+*.jsonl
+
+# Secrets / credentials
+.env*
+*token*
+*secret*
+*.pit
+*.pem
+*.key
+credentials*
+
+# The official GHL OpenAPI clone is NOT bundled — users clone it themselves
+# (see README). Ignore it if anyone clones it into the skill folder.
+ghl/highlevel-api-docs/
+highlevel-api-docs/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/

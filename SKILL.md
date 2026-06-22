@@ -48,30 +48,9 @@ Human-readable docs with usage notes, gotchas, tested examples, and verified sch
 
 ### Enriched Docs (Layer 2)
 
-An example layout once you've started enriching docs. Endpoint counts will vary with the API.
+Human-readable per-API docs live in `<knowledge-base>/ghl/api/` — one file (or folder) per API domain (contacts, opportunities, invoices, calendars, etc.), each with usage notes, gotchas, tested examples, and verified schemas built on top of the official specs. Larger domains may be split into a folder with its own `README.md` index. Maintain `<knowledge-base>/ghl/index.md` as the master index that maps each API to its doc file and tracks documentation status.
 
-| File | Endpoints |
-|------|-----------|
-| `api/contacts.md` | 27 |
-| `api/opportunities.md` | 11 |
-| `api/custom-fields.md` | 14 |
-| `api/custom-values.md` | 5 |
-| `api/calendars.md` | 34 |
-| `api/locations.md` | 29 |
-| `api/products.md` | 27 |
-| `api/store.md` | 18 |
-| `api/oauth.md` | 3 |
-| `api/funnels.md` | 7 |
-| `api/forms.md` | 3 |
-| `api/surveys.md` | 2 |
-| `api/workflows.md` | 1 |
-| `api/campaigns.md` | 1 |
-| `api/invoices.md` | 42 |
-| `api/payments.md` | 24 |
-| `api/users.md` | 7 |
-| `api/conversations.md` | Partial |
-| `api/voice-ai.md` | 4 |
-| `api/social-media-posting.md` | In progress |
+> A bundled, ready-to-use set of these enriched docs is coming in a follow-up release. Until then, build them up as you work — see the Self-Improvement Mandate below.
 
 ### Official Specs Without Enriched Docs Yet
 

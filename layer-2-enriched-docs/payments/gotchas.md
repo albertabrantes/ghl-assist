@@ -7,7 +7,7 @@
 
 The Payments API handles orders, transactions, subscriptions, coupons, payment provider integrations, and custom payment provider configurations. It contains **24 endpoints** organized across **8 sub-groups**, all under the `/payments/` path prefix.
 
-The Payments API is closely related to the [Invoices API](../invoices.md). Recording a payment on an invoice creates a corresponding transaction in the Payments system. Orders created through GHL funnels or checkout pages appear in the Payments orders list, and their associated transactions track individual charges.
+The Payments API is closely related to the [Invoices API](../invoices/README.md). Recording a payment on an invoice creates a corresponding transaction in the Payments system. Orders created through GHL funnels or checkout pages appear in the Payments orders list, and their associated transactions track individual charges.
 
 The API is organized into 8 sub-groups:
 - **White-label Integrations** -- Create and list white-label payment provider integrations (Authorize.net/NMI based)

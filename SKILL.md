@@ -38,7 +38,7 @@ Keep them current with `git pull` inside `layer-1-official-docs/`.
 ```
 layer-2-enriched-docs/*.md   (or */README.md for split domains)
 ```
-Human-readable docs with usage notes, gotchas, tested examples, and verified schemas — built from the official specs plus real-world testing. These ship with the skill.
+Human-readable docs with usage notes, gotchas, examples, and request/response schemas — built from the official specs, with many endpoints verified against a live account and the rest marked 🔬 unverified in `index.md`. These ship with the skill.
 
 ### How to Use Both Layers
 

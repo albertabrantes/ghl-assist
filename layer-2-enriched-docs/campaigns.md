@@ -27,7 +27,7 @@ The Campaigns API accesses the **legacy** drip/sequence system in GoHighLevel. C
 | [Remove Contact from Campaign](#remove-contact-from-campaign) | DELETE | contacts.write | Remove a contact from a specific campaign * |
 | [Remove Contact from Every Campaign](#remove-contact-from-every-campaign) | DELETE | contacts.write | Remove a contact from all campaigns * |
 
-\* Cross-reference from the Contacts API. See [contacts.md](contacts.md) for the primary documentation.
+\* Cross-reference from the Contacts API. See [contacts.md](contacts/README.md) for the primary documentation.
 
 ---
 
@@ -140,7 +140,7 @@ curl -X GET \
 
 Enrolls a contact into a drip campaign.
 
-> **Note:** This endpoint is part of the Contacts API (`contacts.write` scope). It is documented here for cross-reference. See [contacts.md](contacts.md) for the primary documentation.
+> **Note:** This endpoint is part of the Contacts API (`contacts.write` scope). It is documented here for cross-reference. See [contacts.md](contacts/README.md) for the primary documentation.
 
 **Method:** `POST`
 **URL:** `/contacts/{contactId}/campaigns/{campaignId}`
@@ -167,7 +167,8 @@ curl -X POST \
 
 ```json
 {
-  "succeedded": true
+  "succeded": true,
+  "succeeded": true
 }
 ```
 
@@ -175,11 +176,12 @@ curl -X POST \
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `succeedded` | boolean | Whether the operation succeeded (note: the typo is in the actual GHL API) |
+| `succeded` | boolean | Whether the operation succeeded (misspelled, one `e`) |
+| `succeeded` | boolean | Correctly-spelled duplicate of the same flag |
 
-**Note:** Returns **201** (Created), not 200. The `"succeedded"` typo (three d's) is consistent across all GHL action endpoints.
+**Note:** A successful enrollment returns **201** (Created) with **two** success flags — `succeded` (misspelled) and `succeeded` (correct) — both `true`, plus a top-level `traceId`. Check `res.succeeded || res.succeded`. If the contact has DND enabled (including per-channel `dndSettings`, which the contact-list `dnd` boolean does not reflect), enrollment instead returns **400** with `{ "message": "<name> has dnd enabled, not starting campaign '<name>'.", "error": "Bad Request", "statusCode": 400 }`.
 
-> **Status:** 🔬 Unverified — documented from OpenAPI spec research, not tested with live API.
+> **Tested:** Verified against a live location — a clean enrollment returns `201` with `{ "succeded": true, "succeeded": true, "traceId": "..." }`; the DND-blocked path returns `400`.
 
 ---
 
@@ -187,7 +189,7 @@ curl -X POST \
 
 Removes a contact from a specific campaign.
 
-> **Note:** This endpoint is part of the Contacts API (`contacts.write` scope). It is documented here for cross-reference. See [contacts.md](contacts.md) for the primary documentation.
+> **Note:** This endpoint is part of the Contacts API (`contacts.write` scope). It is documented here for cross-reference. See [contacts.md](contacts/README.md) for the primary documentation.
 
 **Method:** `DELETE`
 **URL:** `/contacts/{contactId}/campaigns/{campaignId}`
@@ -214,11 +216,12 @@ curl -X DELETE \
 
 ```json
 {
-  "succeedded": true
+  "succeded": true,
+  "succeeded": true
 }
 ```
 
-> **Status:** 🔬 Unverified — documented from OpenAPI spec research, not tested with live API.
+> **Tested:** Verified against a live location — the Remove endpoint returns `{ "succeded": true, "succeeded": true, "traceId": "..." }`. Both flags are present; check `res.succeeded || res.succeded`.
 
 ---
 
@@ -226,7 +229,7 @@ curl -X DELETE \
 
 Bulk-removes a contact from all campaigns at once.
 
-> **Note:** This endpoint is part of the Contacts API (`contacts.write` scope). It is documented here for cross-reference. See [contacts.md](contacts.md) for the primary documentation.
+> **Note:** This endpoint is part of the Contacts API (`contacts.write` scope). It is documented here for cross-reference. See [contacts.md](contacts/README.md) for the primary documentation.
 
 **Method:** `DELETE`
 **URL:** `/contacts/{contactId}/campaigns/removeAll`
@@ -252,11 +255,12 @@ curl -X DELETE \
 
 ```json
 {
-  "succeedded": true
+  "succeded": true,
+  "succeeded": true
 }
 ```
 
-> **Status:** 🔬 Unverified — documented from OpenAPI spec research, not tested with live API.
+> **Tested:** Verified against a live location — the Remove endpoint returns `{ "succeded": true, "succeeded": true, "traceId": "..." }`. Both flags are present; check `res.succeeded || res.succeded`.
 
 ---
 
@@ -290,7 +294,7 @@ All endpoints return standardized error formats:
 - Campaigns are the **legacy** automation system. For new automations, use Workflows instead.
 - The core Campaigns API is **read-only** (`campaigns.readonly`). There is no API to create, update, or delete campaigns — that must be done through the GHL UI.
 - The contact-level endpoints (add/remove from campaign) use the `contacts.write` scope, not `campaigns.readonly`.
-- The `"succeedded"` response field has a consistent typo (three d's) across all GHL action endpoints. Code should check for `"succeedded"`, not `"succeeded"`.
+- The contact-level campaign endpoints return **two** success flags — `succeded` (misspelled, one `e`) and `succeeded` (correct) — both `true` on success (verified live; workflow enrollment returns the same two-field shape). Parse defensively: `res.succeeded || res.succeded`. Spelling is not uniform across GHL API families — other endpoints (e.g. forms upload, funnels/users delete) document a single flag with differing spellings per their OpenAPI specs (not live-verified here). Do not assume one spelling everywhere.
 - The `status` query parameter on Get Campaigns can filter by `"published"`, `"draft"`, or `"archived"`.
 
 ---

@@ -408,7 +408,7 @@ Content-Type: application/json
 Accept: application/json
 ```
 
-> **Note:** The earlier Voice AI documentation uses `Version: 2021-04-15`. Both versions appear to work for this endpoint but `2021-07-28` is the current standard. [UNVERIFIED — both may work, but prefer 2021-07-28]
+> **Note on the Version header:** The official Conversations OpenAPI spec declares `Version: 2021-04-15` (the only enum value, marked required). In practice the live API accepts **both** `2021-04-15` and `2021-07-28` — both return `200` with data; an unrecognized or missing version returns `401`. Either dated version works; `2021-04-15` is what the spec mandates. **Tested** against a live location.
 
 ### Key Difference from Inbound Endpoint
 
@@ -767,8 +767,8 @@ A **Conversation Provider** is a GHL Marketplace module that creates custom SMS,
 ## Related Documentation
 
 - [Voice AI API](voice-ai.md) — Voice AI agent config, call logs, and the original Send Message (SMS) docs
-- [Contacts API](contacts.md) — Contact CRUD (needed to create test contacts)
-- [Custom Fields API](custom-fields.md) — Managing custom fields (e.g., Contact Stage)
+- [Contacts API](contacts/README.md) — Contact CRUD (needed to create test contacts)
+- [Custom Fields API](custom-fields/README.md) — Managing custom fields (e.g., Contact Stage)
 
 ---
 

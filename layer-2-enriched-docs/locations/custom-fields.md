@@ -144,7 +144,7 @@ Create a new custom field in a location.
 
 **`dataType` enum values:**
 
-`TEXT`, `LARGE_TEXT`, `NUMERICAL`, `PHONE`, **`MONETORY`** (intentional spelling), `CHECKBOX`, `SINGLE_OPTIONS`, `MULTIPLE_OPTIONS`, `FLOAT`, `TIME`, `DATE`, `TEXTBOX_LIST`, `FILE_UPLOAD`, `SIGNATURE`, `RADIO`
+`TEXT`, `LARGE_TEXT`, `NUMERICAL`, `PHONE`, **`MONETORY`** (misspelled in the API — use exactly as spelled), `CHECKBOX`, `SINGLE_OPTIONS`, `MULTIPLE_OPTIONS`, `FLOAT`, `TIME`, `DATE`, `TEXTBOX_LIST`, `FILE_UPLOAD`, `SIGNATURE`, `RADIO`
 
 ### Request Example
 
@@ -187,7 +187,7 @@ curl -X POST \
 ### Important Notes
 
 - The `fieldKey` is auto-generated from the name and used to reference the field in contact/opportunity records.
-- **`MONETORY` is intentionally misspelled** — this is a known quirk in the API, not a typo. Use exactly as spelled.
+- **`MONETORY` is misspelled in the API** (it should be `MONETARY`) — a known typo baked into production. Use exactly as spelled; do not "correct" it.
 
 > **Status:** 🔬 Unverified — from OpenAPI spec / official docs.
 

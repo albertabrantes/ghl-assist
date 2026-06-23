@@ -22,7 +22,7 @@ Use it when you're:
 Drop the skill folder into your Claude Code skills directory:
 
 ```bash
-git clone https://github.com/<your-org>/ghl-assist.git ~/.claude/skills/ghl-assist
+git clone https://github.com/albertabrantes/ghl-assist.git ~/.claude/skills/ghl-assist
 ```
 
 Claude Code will pick it up automatically. The skill activates whenever you ask about the GHL/GoHighLevel API.
@@ -41,7 +41,7 @@ ghl-assist/
     └── apps/*.json                   #   OpenAPI 3.0 specs, one per API domain
 ```
 
-**Layer 2 (enriched docs) ships with the skill** — 24 API domains documented with usage notes, gotchas, tested examples, and verified schemas. Start at `index.md` to find the right file for any GHL area.
+**Layer 2 (enriched docs) ships with the skill** — 24 API domains documented with usage notes, gotchas, and request/response schemas. Many endpoints are verified against a live account; the rest are sourced from the official OpenAPI specs and marked 🔬 unverified in `index.md`. Start at `index.md` to find the right file for any GHL area.
 
 **Layer 1 (official specs) is one quick clone.** From the skill directory:
 

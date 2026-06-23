@@ -145,7 +145,7 @@ curl -X GET \
 
 Enrolls a contact into a workflow, triggering its execution for that contact.
 
-> **Note:** This endpoint is part of the Contacts API (`contacts.write` scope). It is documented here for cross-reference. See [contacts.md](contacts.md) for the primary documentation.
+> **Note:** This endpoint is part of the Contacts API (`contacts.write` scope). It is documented here for cross-reference. See [contacts.md](contacts/README.md) for the primary documentation.
 
 **Method:** `POST`
 **URL:** `/contacts/{contactId}/workflow/{workflowId}`
@@ -168,11 +168,12 @@ curl -X POST \
   -H 'Accept: application/json'
 ```
 
-### Response Example
+### Response Example (201)
 
 ```json
 {
-  "succeedded": true
+  "succeded": true,
+  "succeeded": true
 }
 ```
 
@@ -180,11 +181,12 @@ curl -X POST \
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `succeedded` | boolean | Whether the contact was enrolled successfully |
+| `succeded` | boolean | Whether the contact was enrolled successfully (note the misspelling — one `e`) |
+| `succeeded` | boolean | Correctly-spelled duplicate of the same flag |
 
-**Warning:** The field name `"succeedded"` with a double-d is a **known typo** in the GHL API. This is the actual field name returned -- do not "fix" it in your code.
+**Note:** A successful enrollment returns **201** (Created) with **two** success flags: `succeded` (misspelled, one `e`) and `succeeded` (correct). Both are returned and both are `true` on success. For robustness, check `res.succeeded || res.succeded`. Also returns a top-level `traceId`.
 
-> **Status:** 🔬 Unverified — documented from OpenAPI spec research, not tested with live API.
+> **Tested:** Verified against a live location — `POST /contacts/{contactId}/workflow/{workflowId}` returns `201` with `{ "succeded": true, "succeeded": true, "traceId": "..." }`.
 
 ---
 
@@ -192,7 +194,7 @@ curl -X POST \
 
 Removes a contact from an active workflow.
 
-> **Note:** This endpoint is part of the Contacts API (`contacts.write` scope). It is documented here for cross-reference. See [contacts.md](contacts.md) for the primary documentation.
+> **Note:** This endpoint is part of the Contacts API (`contacts.write` scope). It is documented here for cross-reference. See [contacts.md](contacts/README.md) for the primary documentation.
 
 **Method:** `DELETE`
 **URL:** `/contacts/{contactId}/workflow/{workflowId}`
@@ -219,7 +221,8 @@ curl -X DELETE \
 
 ```json
 {
-  "succeedded": true
+  "succeded": true,
+  "succeeded": true
 }
 ```
 
@@ -227,9 +230,10 @@ curl -X DELETE \
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `succeedded` | boolean | Whether the contact was removed successfully |
+| `succeded` | boolean | Whether the contact was removed successfully (misspelled, one `e`) |
+| `succeeded` | boolean | Correctly-spelled duplicate of the same flag |
 
-> **Status:** 🔬 Unverified — documented from OpenAPI spec research, not tested with live API.
+> **Tested:** Verified against a live location — `DELETE /contacts/{contactId}/workflow/{workflowId}` returns `{ "succeded": true, "succeeded": true, "traceId": "..." }`. Check `res.succeeded || res.succeded`.
 
 ---
 
@@ -273,7 +277,7 @@ There are three methods to trigger workflows via external systems:
 
 - The Workflows API is read-only. There is no way to create, update, or delete workflows via the API. All workflow design happens in the GHL UI.
 - Workflow IDs use UUID format (e.g., `78c57bfc-4862-4ac2-bf30-65085746dc23`), which differs from most other GHL entity IDs that use alphanumeric strings.
-- The `succeedded` typo in responses from the contact-level endpoints is a known GHL API issue and should be expected in your response parsing.
+- The contact-level endpoints return **two** success flags — `succeded` (misspelled, one `e`) and `succeeded` (correct) — both `true` on success. Parse defensively: `res.succeeded || res.succeded`.
 
 ---
 
@@ -629,7 +633,7 @@ Use this when wiring up a new Workflow webhook integration:
 
 - The Workflows API is read-only. There is no way to create, update, or delete workflows via the API. All workflow design happens in the GHL UI.
 - Workflow IDs use UUID format (e.g., `78c57bfc-4862-4ac2-bf30-65085746dc23`), which differs from most other GHL entity IDs that use alphanumeric strings.
-- The `succeedded` typo in responses from the contact-level endpoints is a known GHL API issue and should be expected in your response parsing.
+- The contact-level endpoints return **two** success flags — `succeded` (misspelled, one `e`) and `succeeded` (correct) — both `true` on success. Parse defensively: `res.succeeded || res.succeded`.
 
 ---
 

@@ -3,7 +3,7 @@
 **Base URL:** `https://services.leadconnectorhq.com`
 **API Version Header:** `Version: 2021-07-28`
 
-The Payments API handles orders, transactions, subscriptions, coupons, payment provider integrations, and custom payment provider configurations. It contains **24 endpoints** across **8 sub-groups**, all under the `/payments/` path prefix. It is closely related to the [Invoices API](../invoices.md) — recording a payment on an invoice creates a corresponding transaction here.
+The Payments API handles orders, transactions, subscriptions, coupons, payment provider integrations, and custom payment provider configurations. It contains **24 endpoints** across **8 sub-groups**, all under the `/payments/` path prefix. It is closely related to the [Invoices API](../invoices/README.md) — recording a payment on an invoice creates a corresponding transaction here.
 
 This reference is split into the following files:
 

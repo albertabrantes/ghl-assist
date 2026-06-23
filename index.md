@@ -726,7 +726,7 @@ Hard-won, verified facts. Grouped by API. Each is a present-tense rule — apply
 **Contacts**
 - `POST /contacts/search`: the page-size field is `pageLimit`, NOT `limit` (422 otherwise).
 - `POST /contacts/bulk/tags/update/{type}`: the field is `contacts`, NOT `contactIds` (422). `locationId` is required (400 without it).
-- `POST`/`DELETE /contacts/{id}/workflow/{wfId}` and `…/campaigns/{cmpId}`: the success response carries **two** flags — `succeded` (misspelled, one `e`) **and** `succeeded` (correct) — both `true`, plus a top-level `traceId`. A successful `POST` enrollment returns **201**; `DELETE` returns **200**. Check `res.succeeded || res.succeded`. (Verified live.) Spelling is not uniform across GHL families — forms upload (`succeded`) and funnels/users delete (`succeeded`) are documented per their OpenAPI specs but not live-verified here.
+- `POST`/`DELETE /contacts/{id}/workflow/{wfId}` and `…/campaigns/{cmpId}`: the success response carries **two** flags — `succeded` (misspelled, one `e`) **and** `succeeded` (correct) — both `true`, plus a top-level `traceId`. A successful `POST` enrollment returns **201**; `DELETE` returns **200**. Check `res.succeeded || res.succeded`. (Verified live.) Response shapes are not uniform across GHL families (per the OpenAPI specs, not live-verified here): `DELETE /users/{userId}` → `{ succeded, message }`; `DELETE /funnels/lookup/redirect/{id}` → `{ data: { status } }` (no flag); `POST /forms/upload-custom-files` → `succeded`.
 - `POST /contacts/{id}/campaigns/{cmpId}`: enrolling a contact with DND enabled returns **400** `"<name> has dnd enabled, not starting campaign '<name>'."` — not a success.
 
 **Users**

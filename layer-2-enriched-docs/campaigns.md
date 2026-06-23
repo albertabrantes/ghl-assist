@@ -294,7 +294,7 @@ All endpoints return standardized error formats:
 - Campaigns are the **legacy** automation system. For new automations, use Workflows instead.
 - The core Campaigns API is **read-only** (`campaigns.readonly`). There is no API to create, update, or delete campaigns — that must be done through the GHL UI.
 - The contact-level endpoints (add/remove from campaign) use the `contacts.write` scope, not `campaigns.readonly`.
-- The contact-level campaign endpoints return **two** success flags — `succeded` (misspelled, one `e`) and `succeeded` (correct) — both `true` on success (verified live; workflow enrollment returns the same two-field shape). Parse defensively: `res.succeeded || res.succeded`. Spelling is not uniform across GHL API families — other endpoints (e.g. forms upload, funnels/users delete) document a single flag with differing spellings per their OpenAPI specs (not live-verified here). Do not assume one spelling everywhere.
+- The contact-level campaign endpoints return **two** success flags — `succeded` (misspelled, one `e`) and `succeeded` (correct) — both `true` on success (verified live; workflow enrollment returns the same two-field shape). Parse defensively: `res.succeeded || res.succeded`. Response shapes are not uniform across GHL API families, so do not assume this two-flag pattern everywhere. Per the official OpenAPI specs: `DELETE /users/{userId}` returns `{ succeded, message }` (misspelled flag + a queued-deletion message); `DELETE /funnels/lookup/redirect/{id}` returns `{ data: { status } }` (no success flag at all); `POST /forms/upload-custom-files` returns `succeded` (misspelled, single `e`).
 - The `status` query parameter on Get Campaigns can filter by `"published"`, `"draft"`, or `"archived"`.
 
 ---
